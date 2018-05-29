@@ -1,0 +1,112 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Expense Tracker
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <!--The content below is only a placeholder and can be replaced.-->
+        <div>
+          <h6>Please fill up the form to make an entry.</h6>
+        </div>
+        <form (ngSubmit)="onSubmit(expenseForm.value)" #expenseForm="ngForm" class="clearfix">
+          <div class="form-group">
+            <label>Date:</label>
+            <input type="text" class="form-control" id="Date" name="Date"
+              required
+              [(ngModel)]="Expense.Date"
+              #Date="ngModel" />
+            <div [hidden]="Date.valid || Date.pristine"
+                  *ngIf="Date.errors"
+                  class="alert alert-danger">
+                  Date is required
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Title:</label>
+            <input type="text" class="form-control" id="Title" name="Title" 
+              required
+              [(ngModel)]="Expense.Title"
+              #Title="ngModel" />
+            <div [hidden]="Title.valid || Title.pristine"
+                  *ngIf="Title.errors"
+                  class="alert alert-danger">
+                  Title is required
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Category:</label>
+            <select class="form-control" id="Category" name="Category"
+              required
+              [(ngModel)]="Expense.Category"
+              #Category="ngModel">
+                <option value="Select" selected="selected">Select</option>
+                <option value="Hotel">Hotel</option>
+                <option value="Petrol">Petrol</option>
+                <option value="Diesel">Diesel</option>
+                <option value="Grocery">Grocery</option>
+                <option value="Clothing">Clothing</option>
+                <option value="Society">Society</option>
+                <option value="Movie">Movie</option>
+                <option value="Travel">Travel</option>
+                <option value="Electricity">Electricity</option>
+                <option value="Broadband">Broadband</option>
+                <option value="Mobile">Mobile</option>
+                <option value="Flat">Flat</option>
+                <option value="Car">Car</option>
+                <option value="Bike">Bike</option>
+            </select>
+            <div [hidden]="Category.valid || Category.pristine"
+                  *ngIf="Category.errors"
+                  class="alert alert-danger">
+                  Category is required
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Amount:</label>
+            <input type="text" class="form-control" id="Amount" name="Amount" 
+              required
+              [(ngModel)]="Expense.Amount"
+              #Amount="ngModel" />
+            <div [hidden]="Amount.valid || Amount.pristine"
+                  *ngIf="Amount.errors"
+                  class="alert alert-danger">
+                  Amount is required
+            </div>
+          </div>
+          <div class="form-group">
+            <label>By:</label>
+            <input type="text" class="form-control" id="ByWhom" name="ByWhom" 
+              required
+              [(ngModel)]="Expense.ByWhom"
+              #ByWhom="ngModel" />
+            <div [hidden]="ByWhom.valid || ByWhom.pristine"
+                  *ngIf="ByWhom.errors"
+                  class="alert alert-danger">
+                  By Whom is required
+            </div>
+          </div>
+          <div class="form-group">
+              <label>Details:</label>
+              <input type="text" class="form-control" id="Details" name="Details" 
+                required
+                [(ngModel)]="Expense.Details"
+                #Details="ngModel" />
+              <div [hidden]="Details.valid || Details.pristine"
+                    *ngIf="Details.errors"
+                    class="alert alert-danger">
+                    Details is required
+              </div>
+            </div>
+          <input class="btn button" type="submit" name="submit" value="Submit" />
+          
+        </form>
+      </div>
+    </div>
+  </div>
+</ion-content>
