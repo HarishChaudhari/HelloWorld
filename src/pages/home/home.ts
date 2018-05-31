@@ -2,7 +2,9 @@ import { Component } from '@angular/core';
 import 'rxjs/Rx';
 import { APIHelperService } from "../../app/apihelper.service";
 import { Expense } from "../../app/expense";
-import { NavController, AlertController, LoadingController } from 'ionic-angular';
+import { NavController, AlertController, LoadingController, MenuController } from 'ionic-angular';
+import { SettingsPage } from '../settings/settings';
+import { Storage } from '@ionic/storage';
 
 @Component({
   selector: 'page-home',
@@ -10,19 +12,31 @@ import { NavController, AlertController, LoadingController } from 'ionic-angular
 })
 export class HomePage {
 
-  isFailed = false;
-  isSpinner = false;
   successMsg = '';  
-  Expense = new Expense("","","Select","","","");
+  settingsPage = SettingsPage;
+  Expense = new Expense();
   loading = this.loadingCtrl.create({
     content: 'Please wait...'
   });
 
   constructor(public navCtrl: NavController, 
+    public menuCtrl: MenuController,
     private APIHelperService: APIHelperService, 
     private alertCtrl: AlertController,
-    private loadingCtrl: LoadingController) {
-    
+    private loadingCtrl: LoadingController,
+    public storage: Storage) {
+      this.setDefaultValues();
+    }
+
+  setDefaultValues(){
+    this.Expense.Date = '';
+    this.Expense.Title = '';
+    this.Expense.Category = '';
+    this.storage.get('FIRST_NAME').then((fname) => {
+        this.Expense.ByWhom = fname;
+    });
+    this.Expense.Amount = '';
+    this.Expense.Details = '';
   }
 
   onSubmit(expenseData) {
@@ -44,7 +58,6 @@ export class HomePage {
         }
       },
       err => {
-        this.isFailed = true;
         console.log('failed login')
       }
     );
@@ -54,8 +67,15 @@ export class HomePage {
     let alert = this.alertCtrl.create({
       title: 'Done!',
       subTitle: this.successMsg,
-      buttons: ['Dismiss']
+      buttons: ['Close']
     });
     alert.present();
+  }
+
+  openMenu() {
+    this.menuCtrl.open();
+  }
+  closeMenu() {
+    this.menuCtrl.close();
   }
 }

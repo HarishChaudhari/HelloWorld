@@ -1,23 +1,27 @@
-import {Injectable} from '@angular/core';
+import {Injectable } from '@angular/core';
 import {Http, Response} from "@angular/http";
+import { Storage } from '@ionic/storage';
 
 @Injectable()
 export class APIHelperService {
-    public static API_ENDPOINT='https://script.google.com/macros/s/AKfycby_xCtdMR3wkB--rh9elwl6sjK_CZ5AhJ4t624Z1SvBnOjH-Ibj/exec';
-   
-    constructor( private http:Http) { }
+    apiURL = '';
+    constructor( public http:Http, public storage: Storage) {
+        this.storage.get('API_ENDPOINT').then((url) => {
+            this.apiURL = url;
+        });
+     }
 
     // Uses http.get() to load a single JSON file
-
-    public submitExpenseDataToGoogleSheets(expenseData){
+    submitExpenseDataToGoogleSheets(expenseData){
         /*var headers = new Headers({ 
             'Content-Type': 'application/json'
         });
         var options = new RequestOptions({headers: headers });
         */
-        return this.http.post(APIHelperService.API_ENDPOINT, JSON.stringify(expenseData)).map(this.extractData);
+        return this.http.post(this.apiURL, JSON.stringify(expenseData)).map(this.extractData);
+        
     }
-    private extractData(res: Response) {        
+    extractData(res: Response) {        
         return res.text() ? res.json() : {}; ;
     }
 }

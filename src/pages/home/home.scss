@@ -1,3 +1,37 @@
 page-home {
 
 }
+.close-menu ion-icon {
+    font-size: 40px;
+    display: inline-block;
+    margin: 0 auto;
+}
+.close-menu {
+    text-align: center;
+}
+.side-menu {
+    list-style: none;
+    padding: 0;
+}
+.side-menu a {
+    padding: 20px;
+    display: inline-block;
+    color: #333;
+    font-size: 14px;
+    border-style: solid;
+    width: 100%;
+    border-width: 0 0 1px 0;
+    border-color: #ddd;
+}
+.side-menu a:hover, 
+.side-menu a:active,
+.side-menu a:focus {
+    text-decoration: none;
+    background: #efefef;
+}
+.side-menu a ion-icon {
+    font-size: 25px;
+    vertical-align: middle;
+    line-height: 0;
+    margin-right: 10px;
+}
