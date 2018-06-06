@@ -1,4 +1,5 @@
 export class Expense {
+    index: number;
     Date: string;
     Title: string;
     Category: string;

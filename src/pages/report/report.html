@@ -1,0 +1,39 @@
+<!--
+  Generated template for the ReportPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Report</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+  <div class="report-meta">
+    <div>{{ reportTitle }} </div>
+    <span class="icon"><ion-icon name="ios-cash-outline"></ion-icon></span>
+    <span class="data">₹ {{ totalExpense }}</span>
+  </div>
+  <ion-grid *ngIf="sheetData">
+    <ion-row class="head">
+      <ion-col col-2>Date</ion-col>
+      <ion-col col-2>Title</ion-col>
+      <ion-col col-2>Category</ion-col>
+      <ion-col col-2>Amount</ion-col>
+      <ion-col col-2>By Whom</ion-col>
+      <ion-col col-2>Details</ion-col>
+    </ion-row>
+    <ion-row *ngFor="let row of sheetData">
+      <ion-col col-2>{{ row.Date }}</ion-col>
+      <ion-col col-2>{{ row.Title }}</ion-col>
+      <ion-col col-2>{{ row.Category }}</ion-col>
+      <ion-col col-2>{{ row.Amount }}</ion-col>
+      <ion-col col-2>{{ row.ByWhom }}</ion-col>
+      <ion-col col-2>{{ row.Details }}</ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

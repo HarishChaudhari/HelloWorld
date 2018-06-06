@@ -4,6 +4,7 @@ import { APIHelperService } from "../../app/apihelper.service";
 import { Expense } from "../../app/expense";
 import { NavController, AlertController, LoadingController, MenuController } from 'ionic-angular';
 import { SettingsPage } from '../settings/settings';
+import { ReportPage } from '../report/report';
 import { Storage } from '@ionic/storage';
 
 @Component({
@@ -14,6 +15,7 @@ export class HomePage {
 
   successMsg = '';  
   settingsPage = SettingsPage;
+  reportPage = ReportPage;
   Expense = new Expense();
   loading = this.loadingCtrl.create({
     content: 'Please wait...'
@@ -77,5 +79,9 @@ export class HomePage {
   }
   closeMenu() {
     this.menuCtrl.close();
+  }
+
+  isAdmin(){
+    return this.Expense.ByWhom != '' && this.Expense.ByWhom == 'Harish';
   }
 }

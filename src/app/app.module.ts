@@ -14,12 +14,14 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { APIHelperService } from "./apihelper.service";
 import { SettingsPage } from '../pages/settings/settings';
+import { ReportPage } from '../pages/report/report';
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
-    SettingsPage
+    SettingsPage,
+    ReportPage
   ],
   imports: [
     BrowserModule,
@@ -36,7 +38,8 @@ import { SettingsPage } from '../pages/settings/settings';
   entryComponents: [
     MyApp,
     HomePage,
-    SettingsPage
+    SettingsPage,
+    ReportPage
   ],
   providers: [
     APIHelperService,

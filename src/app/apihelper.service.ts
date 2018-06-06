@@ -19,7 +19,9 @@ export class APIHelperService {
         var options = new RequestOptions({headers: headers });
         */
         return this.http.post(this.apiURL, JSON.stringify(expenseData)).map(this.extractData);
-        
+    }
+    getExpenseDataFromGoogleSheets(){
+        return this.http.get(this.apiURL).map(this.extractData);
     }
     extractData(res: Response) {        
         return res.text() ? res.json() : {}; ;

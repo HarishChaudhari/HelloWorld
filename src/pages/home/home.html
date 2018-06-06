@@ -19,6 +19,12 @@
               <ion-icon name="ios-settings-outline"></ion-icon>
               Settings</a>
         </li>
+        <li *ngIf="isAdmin()">
+          <a [navPush]="reportPage">
+              <ion-icon name="ios-list-box-outline"></ion-icon>
+              Report
+          </a>
+        </li>
       </ul>
     </ion-list>
     <div class="close-menu">
