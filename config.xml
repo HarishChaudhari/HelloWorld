@@ -1,8 +1,8 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="io.ionic.starter" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>HelloWorld</name>
-    <description>An awesome Ionic/Cordova app.</description>
-    <author email="hi@ionicframework" href="http://ionicframework.com/">Ionic Framework Team</author>
+    <name>Expense Manager</name>
+    <description>Simple Expense Manager</description>
+    <author email="harish.chaudhari16@gmail.com" href="http://harishchaudhari.com/">Harish Chaudhari</author>
     <content src="index.html" />
     <access origin="*" />
     <allow-intent href="http://*/*" />

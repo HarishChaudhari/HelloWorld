@@ -17,4 +17,27 @@ page-report {
             margin-left: 10px;
         }
     }
+    .grid {
+        padding: 5px 15px;
+    }
+    .report-nav {
+        .arrow {
+            font-size: 24px;
+            vertical-align: middle;
+
+            &:focus, &:active {
+                color: #15c;
+            }
+        }
+        .center {
+            font-size: 18px;
+            text-align: center;
+            line-height: 28px;
+        }
+        .prev-month { text-align: left; }
+        .next-month { float: right; }
+        ion-col.col {
+            border: 0 transparent;
+        }
+    }
 }

@@ -14,11 +14,20 @@
 
 <ion-content padding>
   <div class="report-meta">
-    <div>{{ reportTitle }} </div>
+    
     <span class="icon"><ion-icon name="ios-cash-outline"></ion-icon></span>
     <span class="data">₹ {{ totalExpense }}</span>
   </div>
-  <ion-grid *ngIf="sheetData">
+  <div class="report-nav">
+    <ion-grid>
+      <ion-row>
+        <ion-col col-1><span class="arrow prev-month" (click)="navigateReport('prev')"><ion-icon name="ios-arrow-dropleft-outline"></ion-icon></span></ion-col>
+        <ion-col col-10><div class="center">{{ reportTitle }} </div></ion-col>
+        <ion-col col-1><span class="arrow next-month" (click)="navigateReport('next')"><ion-icon name="ios-arrow-dropright-outline"></ion-icon></span></ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+  <ion-grid *ngIf="sheetData.length > 0">
     <ion-row class="head">
       <ion-col col-2>Date</ion-col>
       <ion-col col-2>Title</ion-col>
@@ -36,4 +45,9 @@
       <ion-col col-2>{{ row.Details }}</ion-col>
     </ion-row>
   </ion-grid>
+
+
+  <div *ngIf="isNoData == true" class="alert alert-info">
+    There are no expenses recored for this month.
+  </div>
 </ion-content>

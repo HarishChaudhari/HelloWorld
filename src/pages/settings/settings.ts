@@ -16,7 +16,7 @@ import { Settings } from '../../app/settings';
 })
 export class SettingsPage {
   
-  successMsg = 'Settings saved.';
+  successMsg = 'Settings saved. Please restart the app to let settings take effect.';
   settings = new Settings();
   loading = this.loadingCtrl.create({
     content: 'Please wait...'
@@ -60,6 +60,34 @@ export class SettingsPage {
       title: 'Done!',
       subTitle: this.successMsg,
       buttons: ['Close']
+    });
+    alert.present();
+  }
+
+  clearDB(){
+    this.storage.clear();
+  }
+
+  presentConfirm() {
+    let alert = this.alertCtrl.create({
+      title: 'Do you want to clear entire database?',
+      subTitle: 'This will not delete expense sheet data.',
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          handler: () => {
+            console.log('Cancel clicked');
+          }
+        },
+        {
+          text: 'Clear',
+          handler: () => {
+            console.log('Clear clicked');
+            this.clearDB();
+          }
+        }
+      ]
     });
     alert.present();
   }

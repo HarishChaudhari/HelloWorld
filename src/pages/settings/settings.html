@@ -7,11 +7,9 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>settings</ion-title>
+    <ion-title>Settings</ion-title>
   </ion-navbar>
-
 </ion-header>
-
 
 <ion-content padding>
     <p>All fields are required</p>
@@ -41,5 +39,7 @@
           </div>
         </div>
       <input class="btn button" [disabled]="!settingsForm.form.valid" type="submit" name="submit" value="Submit" />
+      <a class="pull-right btn button alert-danger" (click)="presentConfirm()">Clear Entire DB</a>  
     </form>
+
 </ion-content>
